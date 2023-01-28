@@ -1,0 +1,153 @@
+﻿<Window
+    x:Class="MouseMasterVR.MouseRightClickWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:local="clr-namespace:MouseMasterVR"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Set Right Click"
+    Margin="0"
+    Padding="0"
+    BorderBrush="#FF1F1F20"
+    BorderThickness="2"
+    ClipToBounds="False"
+    ResizeMode="NoResize"
+    SizeToContent="WidthAndHeight"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Window.Background>
+        <ImageBrush
+            x:Name="appBackground_Image"
+            ImageSource="{StaticResource backgroundSlate}"
+            Stretch="UniformToFill" />
+    </Window.Background>
+    <!--  Main Grid  -->
+    <Grid
+        Margin="0"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        ClipToBounds="True">
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="ZeroRow" Height="Auto" />
+            <RowDefinition x:Name="FirstRow" Height="Auto" />
+            <RowDefinition x:Name="SecondRow" Height="Auto" />
+            <RowDefinition x:Name="ThirdRow" Height="20" />
+            <RowDefinition x:Name="FourthRow" Height="Auto" />
+            <RowDefinition x:Name="FifthRow" Height="Auto" />
+            <RowDefinition x:Name="SixthRow" Height="Auto" />
+        </Grid.RowDefinitions>
+        <!--  Close Button Screw  -->
+        <Button
+            Grid.Row="0"
+            Width="30"
+            Height="30"
+            Margin="0,0,3,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Click="Close_Button_Click"
+            Cursor="Hand"
+            Style="{StaticResource CustomButtonScrewStyle}"
+            ToolTip="Close">
+            <Image
+                x:Name="closeRightClickWindow_Image"
+                Source="{StaticResource closeButtonScrew}"
+                Style="{StaticResource CustomButtonScrewImageStyle}" />
+        </Button>
+        <!--  TITLE Text Block  -->
+        <TextBlock
+            Grid.Row="1"
+            Margin="10,10,10,7"
+            Style="{StaticResource CustomTextBlockStyle}"
+            Text="MOUSE CLICK REBIND" />
+        <Grid Grid.Row="2">
+            <TextBlock
+                x:Name="buttonReadout_TextBlock"
+                Style="{StaticResource CustomTextBlockReadoutStyle}"
+                Text="Press Any Button"
+                ToolTip="Set Any Controller Button as Mouse Right Click" />
+            <Border Style="{StaticResource CustomBorderReadoutStyle}" />
+        </Grid>
+        <!--  Stack Panel Mouse Rebind Buttons  -->
+        <StackPanel
+            Grid.Row="5"
+            Grid.RowSpan="1"
+            Margin="0,0,0,5"
+            Style="{StaticResource CustomShortStackPanelStyle}">
+            <!--  Mouse Right Click RebindR Button  -->
+            <Grid Grid.Row="5" Cursor="Hand">
+                <Button
+                    x:Name="saveRightClick_Button"
+                    Style="{StaticResource CustomButtonBarStyle}"
+                    ToolTip="Rebind any Joystick Button as Mouse Right Click">
+                    <Grid x:Name="saveRightClickGrid">
+                        <Image
+                            x:Name="saveRightClick_Image"
+                            Source="{Binding ButtonRightClickSaveImageSource}"
+                            Style="{StaticResource CustomButtonBarImageStyle}" />
+                        <TextBlock
+                            x:Name="saveRightClick_TextBlock"
+                            Style="{StaticResource CustomButtonTextBlockStyle}"
+                            Text="Set Mouse Right Click" />
+                    </Grid>
+                    <!--<i:Interaction.Behaviors>
+                        <local:ButtonPressBehaviorType1 />
+                    </i:Interaction.Behaviors>-->
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding SaveRightClickRebind}" PassEventArgsToCommand="True" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Grid>
+            <!--  Mouse Right Click CLEAR Rebind Button  -->
+            <Grid Grid.Row="5" Cursor="Hand">
+                <Button
+                    x:Name="clearRightClick_Button"
+                    Style="{StaticResource CustomButtonBarStyle}"
+                    ToolTip="Remove this Keybind and Close this window">
+                    <Grid x:Name="clearRightClickGrid">
+                        <Image
+                            x:Name="clearRightClick_Image"
+                            Source="{Binding ButtonRightClickClearImageSource}"
+                            Style="{StaticResource CustomButtonBarImageStyle}" />
+                        <TextBlock
+                            x:Name="clearRightClick_TextBlock"
+                            Style="{StaticResource CustomButtonTextBlockStyle}"
+                            Text="CLEAR this Rebind" />
+                    </Grid>
+                    <!--<i:Interaction.Behaviors>
+                        <local:ButtonPressBehaviorType2 />
+                    </i:Interaction.Behaviors>-->
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding ClearRightClickRebind}" PassEventArgsToCommand="True" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="6">
+                <!--  Second Button Screw (Credits)  -->
+                <Button
+                    Margin="0,0,0,-3"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    Style="{StaticResource CustomButtonScrewStyle}">
+                    <Image
+                        x:Name="rightClickButtonScrew_Image"
+                        Source="{StaticResource closeButtonScrew}"
+                        Style="{StaticResource CustomButtonScrewImageStyle}">
+                        <!--  Rotate second Button Screw slightly for organic appearance  -->
+                        <Image.RenderTransform>
+                            <RotateTransform Angle="323" />
+                        </Image.RenderTransform>
+                        <Image.RenderTransformOrigin>
+                            <Point X="0.5" Y="0.5" />
+                        </Image.RenderTransformOrigin>
+                    </Image>
+                </Button>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="CustomMainWindowStyle" TargetType="{x:Type Window}">
+        <!--  Custom Main Window Style  -->
+        <Setter Property="MinWidth" Value="142" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="BorderBrush" Value="#FF1F1F20" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="ClipToBounds" Value="False" />
+        <Setter Property="ResizeMode" Value="NoResize" />
+        <Setter Property="SizeToContent" Value="WidthAndHeight" />
+        <Setter Property="WindowStyle" Value="None" />
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,17 @@
+Beta Release v0.9.0.0 Changelog Jan28-2023
+
+New Features:
+ - Mouse Cursor Centering when target process is in focus, and only if main toggle is ON
+ - Mouse Centering for Falcon BMS only when flying in cockpit via BMS Shared Memory data
+ - Mouse Scroll Up/Down can be rebound to issue any (single) keypress, no modifier keys (yet)
+ - Mouse Scroll rebinds are not 'one keypress per detent', with a default 0.5 second debounce
+ - Hotkeys when app in focus, CTRL+Arrow Key [any] to center app, ALT+F4 to gracefully close
+ - Manual or Automatic Updates will present pop-up choice if update found on app launch
+
+Fixes/Improvements:
+ - Target changed to .NET Framework 4.8
+ - WPF code refactoring into MVVM standards
+ - Added errors logging and optional updates system
+ - Temporary removal of planned mouse click rebind feature
+ - Replaced GitHub repository with this refactored project
+ - Changed to calling GetProcessesByName once per loop in target process focus check

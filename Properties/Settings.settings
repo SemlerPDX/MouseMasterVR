@@ -1,0 +1,72 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MouseMasterVR.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="FirstTimeUse" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="WindowPosTop" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="WindowPosLeft" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">20</Value>
+    </Setting>
+    <Setting Name="MainPowerSwitch" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="UpdateModeDial" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="GameTargetName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Falcon BMS</Value>
+    </Setting>
+    <Setting Name="MouseUpRebind" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Press Any Key</Value>
+    </Setting>
+    <Setting Name="MouseDownRebind" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Press Any Key</Value>
+    </Setting>
+    <Setting Name="MouseLeftClickRebind" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Press Any Button</Value>
+    </Setting>
+    <Setting Name="MouseRightClickRebind" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Press Any Button</Value>
+    </Setting>
+    <Setting Name="MouseLeftRebindKey" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2323</Value>
+    </Setting>
+    <Setting Name="MouseRightRebindKey" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2323</Value>
+    </Setting>
+    <Setting Name="GettingLeftRebindKey" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="GettingRightRebindKey" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="JoystickIsPolling" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="AppUpdated" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="AppUpdating" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="UpdateFileTarget" Type="System.String" Scope="User">
+      <Value Profile="(Default)">none</Value>
+    </Setting>
+    <Setting Name="UpdatePackagePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">none</Value>
+    </Setting>
+    <Setting Name="MouseDebounce" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="AppTitle" Type="System.String" Scope="User">
+      <Value Profile="(Default)">MouseMaster</Value>
+    </Setting>
+    <Setting Name="AppChangelog" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://veterans-gaming.com/semlerpdx/vglabs/apps/changelog_mousemastervr.html</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

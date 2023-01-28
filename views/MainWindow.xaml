@@ -1,0 +1,329 @@
+﻿<Window
+    x:Class="MouseMasterVR.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:local="clr-namespace:MouseMasterVR"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MouseMasterVR"
+    Width="{Binding MainWindowWidth}"
+    Left="{Binding MainWindowLeft}"
+    MouseLeftButtonDown="MainWindow_Drag"
+    Style="{StaticResource CustomMainWindowStyle}"
+    Top="{Binding MainWindowTop}"
+    mc:Ignorable="d">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="PreviewKeyDown">
+            <i:InvokeCommandAction Command="{Binding MainWindow_Hotkeys}" PassEventArgsToCommand="True" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Window.Resources />
+    <Window.Background>
+        <ImageBrush
+            x:Name="appBackground_Image"
+            ImageSource="{Binding AppBackgroundImageSource}"
+            Stretch="UniformToFill" />
+    </Window.Background>
+    <Grid
+        Margin="0"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        ClipToBounds="True">
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="FirstRow" Height="Auto" />
+            <RowDefinition x:Name="SecondRow" Height="Auto" />
+            <RowDefinition x:Name="ThirdRow" Height="Auto" />
+            <RowDefinition x:Name="FourthRow" Height="Auto" />
+            <RowDefinition x:Name="FifthRow" Height="0" />
+            <RowDefinition x:Name="SixthRow" Height="0" />
+            <RowDefinition x:Name="SeventhRow" Height="0" />
+            <RowDefinition x:Name="EighthRow" Height="0" />
+            <RowDefinition x:Name="NinthRow" Height="0" />
+        </Grid.RowDefinitions>
+        <!--  Close Button Screw  -->
+        <Button
+            Grid.Row="0"
+            Width="30"
+            Height="30"
+            Margin="0,0,3,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Click="Close_Button_Click"
+            Cursor="Hand"
+            Style="{StaticResource CustomButtonScrewStyle}"
+            ToolTip="Close">
+            <Image
+                x:Name="closeButton_Image"
+                Source="{StaticResource closeButtonScrew}"
+                Style="{StaticResource CustomButtonScrewImageStyle}" />
+        </Button>
+        <!--  Minimize Button Underscore  -->
+        <TextBlock
+            Grid.Row="0"
+            Width="Auto"
+            Height="Auto"
+            Margin="80,4,34,6"
+            MouseLeftButtonDown="Minimize_Button_Click"
+            Style="{StaticResource CustomMinimizeTextBlockStyle}" />
+        <!--  ON/OFF Toggle Switch Button  -->
+        <TextBlock
+            Grid.Row="1"
+            Margin="13,10,10,7"
+            Style="{StaticResource CustomTextBlockStyle}"
+            Text="MOUSE CENTERING" />
+        <Grid Grid.Row="2">
+            <ToggleButton
+                x:Name="enableMouseCentering_ToggleButton"
+                Panel.ZIndex="1"
+                Command="{Binding ToggleMouseCentering}"
+                IsChecked="{Binding IsMouseCenteringEnabled}"
+                Style="{StaticResource CustomToggleButtonStyle}">
+                <Rectangle
+                    x:Name="rectangle"
+                    Width="35"
+                    Height="75"
+                    Cursor="Hand" />
+            </ToggleButton>
+            <Image
+                x:Name="toggleButton_Image"
+                Margin="0,0,0,0"
+                Source="{Binding ToggleButtonImageSource}"
+                Style="{StaticResource CustomImageStyle}" />
+        </Grid>
+        <!--  Expanding Options Panel Slide Button  -->
+        <Grid Grid.Row="3">
+            <ToggleButton
+                x:Name="expandUserOptions_Button"
+                Grid.Row="3"
+                Width="134"
+                Height="18"
+                Margin="0,15,0,3"
+                Padding="5"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                VerticalContentAlignment="Bottom"
+                Command="{Binding ExpandUserOptions}"
+                Cursor="Hand"
+                IsChecked="{Binding IsCollapsedOptionsMenu}"
+                Style="{StaticResource CustomOptionsToggleButtonStyle}"
+                ToolTip="MouseMaster Options">
+                <Image
+                    x:Name="expandUserOptions_Image"
+                    MinWidth="100"
+                    MaxWidth="422"
+                    Source="{Binding OptionsButtonImageSource}"
+                    Style="{StaticResource CustomImageStyle}" />
+            </ToggleButton>
+        </Grid>
+        <!--  _Expanded Options Panel Updates Dial Button  -->
+        <TextBlock
+            Grid.Row="4"
+            Margin="30,10,0,5"
+            Style="{StaticResource CustomTextBlockStyle}"
+            Text="APP UPDATES" />
+        <Grid Grid.Row="5" Margin="5,10,0,15">
+            <Button
+                x:Name="setUpdatesModeDial_Button"
+                Grid.Row="5"
+                Grid.Column="0"
+                Height="auto"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Command="{Binding SetUpdatesModeDial}"
+                Cursor="Hand"
+                Style="{StaticResource CustomButtonStyle}">
+                <Image
+                    x:Name="setUpdatesModeDial_Image"
+                    Source="{Binding ButtonDialImageSource}"
+                    Style="{StaticResource CustomImageStyle}" />
+            </Button>
+            <TextBlock
+                Grid.Row="5"
+                Grid.Column="1"
+                Margin="0,-5,7,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Style="{StaticResource CustomTextBlockStyle}"
+                Text="Auto" />
+            <TextBlock
+                Grid.Row="5"
+                Grid.Column="1"
+                Margin="0,0,7,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Style="{StaticResource CustomTextBlockStyle}"
+                Text="Manual" />
+            <TextBlock
+                Grid.Row="5"
+                Grid.Column="1"
+                Margin="0,0,7,-5"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Style="{StaticResource CustomTextBlockStyle}"
+                Text="None" />
+        </Grid>
+        <!--  _Expanded Options Panel Mouse RebindR Buttons  -->
+        <StackPanel
+            Grid.Row="6"
+            Grid.RowSpan="1"
+            Margin="0,0,0,0"
+            Style="{StaticResource CustomStackPanelStyle}">
+            <!--  Mouse Left Click RebindR Button  -->
+            <Grid Grid.Row="6" Cursor="Hand">
+                <Button
+                    x:Name="openLeftClickWindow_Button"
+                    Style="{StaticResource CustomButtonBarStyle}"
+                    ToolTip="Rebind any Joystick Button as Mouse Left Click">
+                    <Grid x:Name="openLeftClickMenuGrid">
+                        <Image
+                            x:Name="openLeftClickWindow_Image"
+                            Source="{Binding ButtonLeftClickMenuImageSource}"
+                            Style="{StaticResource CustomButtonBarImageStyle}" />
+                        <TextBlock
+                            x:Name="openLeftClickWindow_TextBlock"
+                            Style="{StaticResource CustomButtonTextBlockStyle}"
+                            Text="Set Mouse Left Click" />
+                    </Grid>
+                    <!--<i:Interaction.Behaviors>
+                        <local:ButtonPressBehaviorType1 />
+                    </i:Interaction.Behaviors>-->
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding OpenMouseClickWindow}" PassEventArgsToCommand="True" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Grid>
+            <!--  Mouse Left Click RebindR Button  -->
+            <Grid Grid.Row="6" Cursor="Hand">
+                <Button
+                    x:Name="openRightClickWindow_Button"
+                    Style="{StaticResource CustomButtonBarStyle}"
+                    ToolTip="Rebind any Joystick Button as Mouse Right Click">
+                    <Grid x:Name="openRightClickMenuGrid">
+                        <Image
+                            x:Name="openRightClickWindow_Image"
+                            Source="{Binding ButtonRightClickMenuImageSource}"
+                            Style="{StaticResource CustomButtonBarImageStyle}" />
+                        <TextBlock
+                            x:Name="openRightClickWindow_TextBlock"
+                            Style="{StaticResource CustomButtonTextBlockStyle}"
+                            Text="Set Mouse Right Click" />
+                    </Grid>
+                    <!--<i:Interaction.Behaviors>
+                        <local:ButtonPressBehaviorType1 />
+                    </i:Interaction.Behaviors>-->
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding OpenMouseRightClickWindow}" PassEventArgsToCommand="True" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Grid>
+        </StackPanel>
+        <StackPanel
+            Grid.Row="7"
+            Grid.RowSpan="2"
+            Margin="0,0,0,5"
+            Style="{StaticResource CustomStackPanelStyle}">
+            <!--  Mouse Scroll UP RebindR Button  -->
+            <Grid Grid.Row="7" Cursor="Hand">
+                <Button
+                    x:Name="openScrollUpWindow_Button"
+                    Style="{StaticResource CustomButtonBarStyle}"
+                    ToolTip="Rebind Mouse Scroll UP as any Keyboard Key">
+                    <Grid>
+                        <Image
+                            x:Name="openScrollUpWindow_Image"
+                            Source="{Binding ButtonScrollUpMenuImageSource}"
+                            Style="{StaticResource CustomButtonBarImageStyle}" />
+                        <TextBlock
+                            x:Name="openScrollUpWindow_TextBlock"
+                            Style="{StaticResource CustomButtonTextBlockStyle}"
+                            Text="Set Mouse Scroll  ▲" />
+                    </Grid>
+                    <!--<i:Interaction.Behaviors>
+                        <local:ButtonPressBehaviorType2 />
+                    </i:Interaction.Behaviors>-->
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding OpenScrollUpWindow}" PassEventArgsToCommand="True" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Grid>
+            <!--  Mouse Scroll DOWN RebindR Button  -->
+            <Grid Grid.Row="7" Cursor="Hand">
+                <Button
+                    x:Name="openScrollDownWindow_Button"
+                    Style="{StaticResource CustomButtonBarStyle}"
+                    ToolTip="Rebind Mouse Scroll DOWN as any Keyboard Key">
+                    <Grid>
+                        <Image
+                            x:Name="openScrollDownWindow_Image"
+                            Source="{Binding ButtonScrollDownMenuImageSource}"
+                            Style="{StaticResource CustomButtonBarImageStyle}" />
+                        <TextBlock
+                            x:Name="openScrollDownWindow_TextBlock"
+                            Style="{StaticResource CustomButtonTextBlockStyle}"
+                            Text="Set Mouse Scroll  ▼" />
+                    </Grid>
+                    <!--<i:Interaction.Behaviors>
+                        <local:ButtonPressBehaviorType1 />
+                    </i:Interaction.Behaviors>-->
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding OpenScrollDownWindow}" PassEventArgsToCommand="True" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="8">
+                <!--  _Expanded Options Panel Target Process TextBox Entry Field  -->
+                <TextBox
+                    x:Name="setProcessTarget_TextBox"
+                    FontSize="{Binding TextBoxFontSizeProcess}"
+                    Style="{StaticResource CustomTextBoxTargetStyle}"
+                    Template="{StaticResource CustomTextBoxStyle}"
+                    Text="{Binding TextBoxTextProcess}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="PreviewKeyDown">
+                            <i:InvokeCommandAction Command="{Binding SetProcessTarget_Hotkeys}" PassEventArgsToCommand="True" />
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="KeyUp">
+                            <i:InvokeCommandAction Command="{Binding ResizeTextProcessTargetTextbox}" PassEventArgsToCommand="True" />
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="LostFocus">
+                            <i:InvokeCommandAction Command="{Binding ResetTextProcessTargetTextbox}" PassEventArgsToCommand="True" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+                <!--  _Expanded Options Panel - Second Button Screw (Credits)  -->
+                <Button
+                    x:Name="repoLink_Button"
+                    Margin="0,0,0,-5"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    Command="{Binding OpenRepositoryButton}"
+                    Cursor="Hand"
+                    Style="{StaticResource CustomButtonScrewStyle}"
+                    ToolTip="Open my repositories page on GitHub">
+                    <Image
+                        x:Name="repoLinkButton_Image"
+                        Source="{StaticResource closeButtonScrew}"
+                        Style="{StaticResource CustomButtonScrewImageStyle}">
+                        <!--  Rotate second Button Screw slightly for organic appearance  -->
+                        <Image.RenderTransform>
+                            <RotateTransform Angle="330" />
+                        </Image.RenderTransform>
+                        <Image.RenderTransformOrigin>
+                            <Point X="0.5" Y="0.5" />
+                        </Image.RenderTransformOrigin>
+                    </Image>
+                </Button>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>
